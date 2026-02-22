@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
 import heroImage from "@/public/webp/heroImage.webp";
@@ -7,28 +8,32 @@ import { AppInputField } from "../ui/appInputField";
 import { Button } from "../ui/button";
 import { Formik, Form } from "formik";
 import logo from "@/public/logo.png";
-import Link from "next/link";
+import { loginSchema, signUpSchema } from "@/schemas/auth";
 
 type AuthMode = "login" | "signup";
 
 export function LoginForm() {
-  const handleSubmit = () => {
-    console.log("submit");
-  };
-
-  const InitialValues = {
-    email: "",
-    password: "",
+  const handleSubmit = (values: any) => {
+    console.log(values);
   };
 
   const [form, setForm] = useState<AuthMode>("login");
 
+  const InitialValues =
+    form === "login"
+      ? {
+          email: "",
+          password: "",
+        }
+      : {
+          username: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+        };
+
   const handleForm = () => {
-    if (form === "login") {
-      setForm("signup");
-    } else {
-      setForm("login");
-    }
+    setForm((prev) => (prev === "login" ? "signup" : "login"));
   };
 
   return (
@@ -44,16 +49,18 @@ export function LoginForm() {
             </div>
           )}
           <div>
-            <h2 className="text-3xl font-medium">
+            <h2 className="text-3xl font-semibold">
               {form === "login" ? "Welcome Back" : "Create an Account"}
             </h2>
             <p className=" mt-2 text-sm text-gray-500">
-              {form === "login" ? "Enter Your Account Credentials" : ""}
+              {form === "login"
+                ? "Enter Your Account Credentials"
+                : "Sign up to unlock your workspace experience."}
             </p>
           </div>
           <Formik
             enableReinitialize
-            validationSchema={""}
+            validationSchema={form === "login" ? loginSchema : signUpSchema}
             initialValues={InitialValues}
             onSubmit={handleSubmit}
           >
@@ -65,7 +72,7 @@ export function LoginForm() {
                     label="Username"
                     placeholder="Enter Your Username"
                     type="text"
-                    labelClassName="text-base"
+                    labelClassName="text-sm"
                     className="text-black"
                   />
                 )}
@@ -75,7 +82,7 @@ export function LoginForm() {
                   label="Email"
                   placeholder="Enter Your Email"
                   type="email"
-                  labelClassName="text-base"
+                  labelClassName="text-sm"
                   className="text-black"
                 />
                 <AppInputField
@@ -83,7 +90,7 @@ export function LoginForm() {
                   label="Password"
                   placeholder="Enter Your Password"
                   type="password"
-                  labelClassName="text-base"
+                  labelClassName="text-sm"
                   className="text-black"
                 />
 
@@ -93,7 +100,7 @@ export function LoginForm() {
                     label="Confirm Password"
                     placeholder="Re-enter Your Password"
                     type="password"
-                    labelClassName="text-base"
+                    labelClassName="text-sm"
                     className="text-black"
                   />
                 )}
@@ -108,7 +115,9 @@ export function LoginForm() {
                   </span>
                 )}
 
-                <Button className="mt-3">Sign In</Button>
+                <Button className="mt-3 cursor-pointer">
+                  {form === "login" ? "Sign In" : "Sign Up"}{" "}
+                </Button>
               </Form>
             )}
           </Formik>
