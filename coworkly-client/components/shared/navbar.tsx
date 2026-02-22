@@ -4,6 +4,22 @@ import { Button } from "../ui/button";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import logo from "@/public/logo.png";
+import Link from "next/link";
+
+const navLinks = [
+  {
+    label: "Pricing",
+    link: "#",
+  },
+  {
+    label: "About",
+    link: "#",
+  },
+  {
+    label: "Contact",
+    link: "#",
+  },
+];
 
 export function Navbar() {
   const router = useRouter();
@@ -23,24 +39,16 @@ export function Navbar() {
           <span className="text-xl font-semibold text-gray-950">oworkly</span>
         </div>
         <div className="hidden md:flex items-center gap-8 text-sm">
-          <a
-            href="#features"
-            className="text-stone-600 hover:text-stone-900 transition"
-          >
-            Pricing
-          </a>
-          <a
-            href="#how-it-works"
-            className="text-stone-600 hover:text-stone-900 transition"
-          >
-            About
-          </a>
-          <a
-            href="#for-you"
-            className="text-stone-600 hover:text-stone-900 transition"
-          >
-            Contact
-          </a>
+          {navLinks.map((link, index) => (
+            <Link
+              href={link.link}
+              className="group text-stone-600 hover:text-brand-primary transition-all duration-300 ease-in-out"
+              key={index}
+            >
+              {link.label}
+              <div className="w-0 group-hover:w-full h-[2px] bg-brand-primary rounded-full mt-1 transition-all duration-500 ease-in-out"></div>
+            </Link>
+          ))}
           <Button
             onClick={() => handleNavigation("/authentication/login")}
             className="bg-brand-primary hover:bg-brand-hover text-white cursor-pointer"

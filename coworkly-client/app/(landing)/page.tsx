@@ -1,5 +1,5 @@
 import { HeroSection } from "@/components/landing-page/HeroSection";
-import { HighlightsSection } from "@/components/landing-page/HighlightsSection";
+import { HighlightsSection } from "@/components/landing-page/HighlightSection/HighlightsSection";
 import { HowItWorkSection } from "@/components/landing-page/GetStartedSection/HowItWorkSection";
 import { ForYouSection } from "@/components/landing-page/ForYouSection/ForYouSection";
 import { Testimonial } from "@/components/landing-page/Testimonial";

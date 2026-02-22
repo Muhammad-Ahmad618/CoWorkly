@@ -39,8 +39,8 @@ export function HeroSection() {
           <Image
             src={HeroImage}
             alt="Hero Image"
-            width={1000}
-            height={1000}
+            width={500}
+            height={500}
             className="w-full h-full object-cover rounded-2xl shadow-gray-300 shadow-lg"
           />
         </div>

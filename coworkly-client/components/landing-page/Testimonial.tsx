@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Star } from "lucide-react";
+import { Star, User } from "lucide-react";
 
 export function Testimonial() {
   return (
@@ -17,6 +17,9 @@ export function Testimonial() {
         <div className="grid md:grid-cols-3 gap-8">
           {/* Testimonial 1 */}
           <Card className="p-8 border-stone-200/50 bg-white">
+            <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+              <User />
+            </div>
             <div className="flex gap-1 mb-4">
               {[...Array(5)].map((_, i) => (
                 <Star
@@ -38,6 +41,9 @@ export function Testimonial() {
 
           {/* Testimonial 2 */}
           <Card className="p-8 border-stone-200/50 bg-white">
+            <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+              <User />
+            </div>
             <div className="flex gap-1 mb-4">
               {[...Array(5)].map((_, i) => (
                 <Star
@@ -58,6 +64,9 @@ export function Testimonial() {
 
           {/* Testimonial 3 */}
           <Card className="p-8 border-stone-200/50 bg-white">
+            <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+              <User />
+            </div>
             <div className="flex gap-1 mb-4">
               {[...Array(5)].map((_, i) => (
                 <Star
