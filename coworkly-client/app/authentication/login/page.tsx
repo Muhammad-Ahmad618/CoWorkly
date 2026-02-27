@@ -1,9 +1,5 @@
-import { LoginForm } from "@/components/login/login-form";
+import { LoginForm } from "@/components/login/Authentication";
 
 export default function LoginPage() {
-  return (
-    <div className="h-screen bg-[#faf4f1] flex items-center justify-center">
-      <LoginForm />
-    </div>
-  );
+  return <LoginForm />;
 }
